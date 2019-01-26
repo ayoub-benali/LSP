@@ -17,8 +17,8 @@ except ImportError:
     pass
 
 
-def ensure_references_panel(window: sublime.Window) -> 'Optional[sublime.View]':
-    return ensure_panel(window, "references", r"^\s*\S\s+(\S.*):$", r"^\s+([0-9]+):?([0-9]+).*$",
+def ensure_references_panel(window: sublime.Window, panel_name: str) -> 'Optional[sublime.View]':
+    return ensure_panel(window, panel_name, r"^\s*\S\s+(\S.*):$", r"^\s+([0-9]+):?([0-9]+).*$",
                         "Packages/" + PLUGIN_NAME + "/Syntaxes/References.sublime-syntax")
 
 
@@ -62,7 +62,7 @@ class LspSymbolReferencesCommand(LspTextCommand):
         base_dir = get_project_path(window)
         formatted_references = self._get_formatted_references(response, base_dir)
 
-        panel = ensure_references_panel(window)
+        panel = ensure_references_panel(window, "references")
         if not panel:
             return
         panel.settings().set("result_base_dir", base_dir)
