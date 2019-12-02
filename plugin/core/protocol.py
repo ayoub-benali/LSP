@@ -139,6 +139,10 @@ class Request:
         return Request("textDocument/codeAction", params)
 
     @classmethod
+    def codeLens(cls, params: dict) -> 'Request':
+        return Request("textDocument/codeLens", params)
+
+    @classmethod
     def documentColor(cls, params: dict) -> 'Request':
         return Request('textDocument/documentColor', params)
 

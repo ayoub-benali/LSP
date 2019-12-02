@@ -66,6 +66,7 @@ def get_initialize_params(workspace_folders: List[WorkspaceFolder], config: Clie
                         }
                     }
                 },
+                "codeLens": {},
                 "rename": {},
                 "colorProvider": {},
                 "publishDiagnostics": {
